@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #9DC183; /* 豆绿色 */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2em 0;
+        }
+        section {
+            margin-bottom: 2em;
+        }
+        h2 {
+            border-bottom: 2px solid #9DC183;
+            padding-bottom: 0.5em;
+        }
+        .info-box {
+            background-color: white;
+            padding: 1em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-info li {
+            margin-bottom: 0.5em;
+        }
+        footer {
+            background-color: #9DC183;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>个人网页</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>个人简介</h2>
+            <div class="info-box">
+                <p>姓名：王雷涛</p>
+                <p>尺码：18CM</p>
+                <p>类型：粗长直</p>
+                <p>职业：A片男一号</p>
+            </div>
+        </section>
+        <section>
+            <h2>工作经验</h2>
+            <div class="info-box">
+<p>公司：广州富米科技有限公司</p>
+                <p>1.熟悉Linux环境和Linux常用的操作命令，Shell基础的脚本编写，并熟练使用JavaSE基础
+2.熟悉Hadoop分布式文件系统，能够独立搭建Hadoop运行环境及HA，理解HDFS的读写流程、MapReduce任务切片机制和分区思路、Shuﬄe机制
+3.熟悉Java基本开发语言，有良好的面向对象编程和函数式编程功底
+4.熟练搭建并使用Flume日志文件采集系统，熟悉Flume三大组件的作用，比如source,channel,sink
+5.熟练搭建Kafka集群和Kafka的基本架构,熟悉kafka的分区，生产者，消费者
+6.熟悉掌握Hive的基本架构，熟练使用HQL对数据进行分析及Hive中常见的函数
+7.熟悉HBase的基本架构、存储，基本原理，读取流程，列式存储的优势有利于对整列的查询
+8.熟练掌握scala语言的集合，模式匹配，函数的应用，以及隐式转换
+9.熟练掌握spark的运行模式：本地模式，standalone,Yarn,以及spark的常用算子
+10.掌握数据倾斜的基本原因，以及常用的解决数据倾斜的技术
+12.熟悉掌握SSM框架，并可以完成对数据库标的增删查改
+13.熟悉使用sqoop,datax,Maxwell工具实现数据的迁移，比如业务数据库Mysql/日志服务器数据写到hdfs
+14，熟悉springboot,并熟悉使用springcloud的五大组件
+15，了解zookeeper，nacos，es</p>
+<p>
+优化数据管理，为了更好进行指标分析
+项目分析：
+1.进行建模过程，明确业务事实、维度需求、粒度要求、确定度量值等维度建模流程，对后端业务数据进行主题的划分
+2.进行数据同步过程，把不同数据源数据同步到数仓，进行清洗，脱敏，为日志数据加上时间时间戳，解决零点漂移问题。
+3.对日志文件使用getjsonobject根据特征属性值对日志进行分类，分成启动日志，页面日志，动作日志，曝光日志，错误日志
+4.对业务数据根据业务关注点分为事务型事实表、周期型快照事实表、累计型快照事实表
+5.事务型事实表，首日装载：按xxtime动态分区及装载（比如creattime），每日装载：按当日期静态分区及装载
+6.周期型快照事实表，首日装载：按给定日期静态分区及装载，每日装载：按当日期静态分区及装载
+7.累积型快照事实表：首日装载：依次按xxtime,xxtime...动态分区，若依次都为空，最终分区为9999-99-99
+8.对于数据会发生变化但变化频率不多的维度表采用拉链表
+9.离线仓库5层实现：
+ODS层：采用外部表，使用gzip压缩，存储各种渠道的源数据，按天分区；
+DWD层：根据维度建模，以及业务的关注点，将事实表分为事实型、周期型快照事实表、累积型快照事实表，采用不同的分区策略以及同步策略，在事实表中用维度外键与维度表关联，事实表可以有一定的冗余字段
+DWS层：从维度的角度对度量值以天为单位进行聚合；
+DWT层：从维度的角度对度量值以7天，30天，累计至今等单位进行聚合
+DIM层：与事实表构建外键依赖的维度表；</p>
+            </div>
+        </section>
+        <section>
+            <h2>教育背景</h2>
+            <div class="info-box">
+                <p>学校：南阳理工学院</p>
+                <p>专业：软件工程</p>
+                <p>学历：本科</p>
+            </div>
+        </section>
+        <section>
+            <h2>个人技能</h2>
+            <div class="info-box">
+                <p>熟练掌握:  
+java
+golang
+solidity
+
+了解c语言。
+熟练应用hive  spark 
+了解flink</p>
+            </div>
+        </section>
+        <section>
+            <h2>谢谢</h2>
+            <div class="info-box">
+                <p>请加我V，并且V我50，我私发给你我的实战视频</p>
+            </div>
+        </section>
+        <section>
+            <h2>联系信息</h2>
+            <div class="info-box">
+                <ul class="contact-info">
+                    <li>邮箱：888@qq.com</li>
+                    <li>电话：191111111</li>
+                    <li>地址：costom address</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 个人网页. 保留所有权利。</p>
+    </footer>
+</body>
+</html>
